@@ -1,0 +1,127 @@
+.slider-banner{
+    .slick-slide:not(:last-child){
+        padding: 0 10px;
+        border-radius: 8px;
+        overflow: hidden;
+    }   
+
+    img{
+        width: 100%;
+        height: auto;   
+    }
+}
+
+/* item */
+.slick-track{
+    padding: 5px 0;
+}
+/* button */
+.slick-arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    padding: 20px 5px;
+    background-color: #33333396;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.slick-prev{
+    left: 0;
+}
+.slick-next{
+    right: 0;
+}
+.slick-slider{
+    position: relative;
+}
+
+.slick-dots{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    list-style: none;
+}
+/* Chọn các điểm */
+.slick-dots li {
+    margin: 0 5px;
+}
+
+
+/* Chọn nút bên trong mỗi điểm */
+.slick-dots button {
+    background-color: #3333335e;
+    border: none;
+    outline: none;
+    font-size: 0; /* Đặt kích thước font về 0 để ẩn số đánh */
+    line-height: 0; /* Đặt line height về 0 để ẩn số đánh */
+    color: transparent; /* Ẩn màu chữ */
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Chọn điểm đang được chọn */
+.slick-dots .slick-active button {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+.slider-product{
+    border-radius: 10px;
+    overflow: hidden;
+    .slick-slide:not(:last-child){
+        padding: 0 10px;
+        border-radius: 8px;
+        overflow: hidden;
+    }  
+    &-content{
+        padding-bottom: 20px;
+    }
+    &-header{
+        // min-height: 120px;
+        // @media (max-width: 800px) {
+        //     min-height: 50px;
+        // }
+    }
+
+    &-block{
+        border-radius: 10px;
+        overflow: hidden;
+    }
+}
+
+.product-slideshow{
+    img{
+        width: 100%;
+        height: auto;
+    }
+
+    .slide-btn{
+        img{
+            width: 100%;
+            height: auto;
+        }
+        background-color: none;
+        width: 50px;
+        height: auto;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    &-item{
+        img{
+            width: 60%;
+            height: auto;
+            display: inline-block;
+        }
+        text-align: center;
+    }
+}

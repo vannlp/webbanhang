@@ -1,0 +1,135 @@
+.header{
+    position: relative;
+    z-index: 100;
+    &-top{
+        padding: 6px 0;
+        background-color: black;
+
+        &-text{
+            color: white;
+            margin: 0;
+        }
+    }
+
+    &-mobile{
+        display: none;
+    }
+
+    &-main{
+        padding: 15px 0;
+        background-color: #E2E2E2;
+
+    }
+
+    &-logos{
+        display: inline-block;
+        & img{
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    &-search{
+        &-form{
+            max-width: 680px;
+            position: relative;
+            &>input{
+                border: none;
+                outline: none;
+                border-radius: 5px;
+                width: 100%;
+                height: 40px;
+                padding: 5px 10px;
+                &:focus{
+                    border: 1px solid orangered;
+                }
+            }
+
+            &>button{
+                position: absolute;
+                right: 1%;
+                top: 50%;
+                border: none;
+                outline: none;
+                background-color: #F9BB01;
+                color: white;
+                height: 30px;
+                width: 50px;
+                border-radius: 5px;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    &-left{
+        display: flex;
+        justify-content: end;
+        gap: 30px;
+    }
+
+    &-wp{
+        display: flex;
+        align-items: center ;
+        gap: 10px;
+
+    }
+
+    &-icon{
+        font-size: 25px;
+    }
+
+    &-content{
+        & a{
+            text-decoration: none;
+            color: #333;
+        }
+    }
+
+    &-cart{
+        text-decoration: none;
+        color: #333;
+    }
+
+    &-bottom{
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        background-color: #fff;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .header {
+        &-top{
+            display: none;
+        }
+
+        &-bottom{
+            display: none;
+        }
+
+        &-main{
+            &-center{
+                display: none ;
+            }
+
+            &-row{
+                justify-content: space-between;
+            }
+        }
+
+        &-content{
+            display: none;
+        }
+
+        &-mobile{
+            display: block;
+
+            &-menu{
+                display: inline-block;
+
+                &>i{
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}
