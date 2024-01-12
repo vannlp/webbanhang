@@ -10,16 +10,12 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Log;
 use Prettus\Repository\Traits\CacheableRepository;
+use Illuminate\Support\Str;
+
 
 class CartRepository extends Repository {
     use CacheableRepository;
 
-    public function __construct(
-        protected ProductRepository $productRepository
-    )
-    {
-        
-    }
 
     /**
      * Specify model class name.
@@ -31,6 +27,29 @@ class CartRepository extends Repository {
         return Cart::class;
     }
 
+
+    public function getCart($input = []) {
+        $configs = [
+            'time_life_cart_session' => 60 * 24 * 7
+        ];
+
+        if(auth()->check()) {
+            $user_id = auth()->user()->id;
+            $session = null;
+            $cart = $this->model->query()->where('user_id', $user_id)->first();
+        }else{
+            $user_id = null;
+            $session = request()->cookie('cart_session');
+            $cart = $this->model->query()->where('session', $session)->first();
+        }
+
+
+        if(isset($input['is_cartDetail'])) {
+            $cart = $cart->load('cartDetails');
+        }
+
+        return $cart;
+    }
     
     
 }

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Helpers\CartHelper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Nwidart\Modules\Facades\Module;
@@ -16,6 +17,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         // 
+        app()->singleton(CartHelper::class);
+
     }
 
     /**
@@ -28,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
         // require_once __DIR__."../Helpers/helper.php";
         // $module = Module::find('blog');
         // $module->disable();
+
     }
 }

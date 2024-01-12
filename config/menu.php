@@ -50,5 +50,15 @@ return [
                 ['id' => 3, 'title' => 'Thêm mới', 'name' => 'admin.product.create', 'permission_code' => 'CREATE_PRODUCT'],
             ],  
         ],
+
+        [
+            'id' => 4,
+            'code' => 'MODULE',
+            'title' => 'Module',
+            'name' => 'admin.module.index',
+            'permisstion_group' => [],
+            'icon' => '<i class="bi bi-plugin"></i>',
+            'children' => [],  
+        ],
     ]
 ];

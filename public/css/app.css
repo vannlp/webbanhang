@@ -632,3 +632,17 @@ body {
     font-size: 14px;
   }
 }
+
+.cart {
+  padding: 20px 0;
+}
+.cart-item {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+.cart-item:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

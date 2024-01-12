@@ -13,7 +13,7 @@ class Controller extends BaseController
     public function viewSite($patch, $data = []) {
         $sitePatch = 'site::pages';
         $patch = "{$sitePatch}.{$patch}";
-        return view($patch, $data);
+        return response()->view($patch, $data);
     }
 
     public function responseSuccess($message, $status = 200) {
@@ -25,6 +25,20 @@ class Controller extends BaseController
     public function responseError($message, $status = 400) {
         return response()->json([
             'message' => $message
+        ], $status);
+    }
+
+    public function responseSuccessWithData($message = '', $data, $status = 200) {
+        return response()->json([
+            'message' => $message,
+            'data' => $data
+        ], $status);
+    }
+
+    public function responseErrorWithData($message = '', $data, $status = 400) {
+        return response()->json([
+            'message' => $message,
+            'data' => $data
         ], $status);
     }
 }

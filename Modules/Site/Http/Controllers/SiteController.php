@@ -2,14 +2,18 @@
 
 namespace Modules\Site\Http\Controllers;
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Controller ;
 use App\Models\Category;
 use App\Models\Product;
+use App\Repositories\CartRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Str;
+
 
 class SiteController extends Controller
 {
@@ -17,6 +21,8 @@ class SiteController extends Controller
     public function __construct(
         protected CategoryRepository $categoryRepository,
         protected ProductRepository $productRepository,
+        protected CartRepository $cartRepository,
+        protected CartController $cartController
     )
     {
     }
@@ -71,10 +77,24 @@ class SiteController extends Controller
         ]);
     }
 
-    public function cartPage() {
+    public function cartPage(Request $request) {
+        // get cart
+        $configs = [
+            'time_life_cart_session' => 60 * 24 * 7
+        ];
 
-        return $this->viewSite('cart', [
+        $user_id = auth()->user()->id ?? null;
+
+
+        $cart = cart()->getCart(['loadCartDetail' => true, 'load' => ['cartDetails.product', 'cartDetails.product.avatar']]);
+
+
+        $res = $this->viewSite('cart', [
             // 'products' => $products,
+            'cart' => $cart
         ]);
+
+
+        return $res;
     }
 }

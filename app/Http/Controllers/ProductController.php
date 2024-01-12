@@ -36,7 +36,7 @@ class ProductController extends Controller
     }
 
     protected function handleQueryDataTabel(Builder $productQuery, Request $request) {
-        $productQuery->with('categories');
+        $productQuery->with(['categories', 'avatar']);
 
         $productQuery->orderBy('created_at', 'desc');
         

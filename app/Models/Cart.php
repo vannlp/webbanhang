@@ -20,7 +20,7 @@ class Cart extends BaseModel
         'updated_at',
     ];
 
-    public function cartDetail() {
+    public function cartDetails() {
         return $this->hasMany(CartDetail::class, 'cart_id', 'id');
     }
    

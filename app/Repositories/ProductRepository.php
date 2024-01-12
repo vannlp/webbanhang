@@ -106,8 +106,5 @@ class ProductRepository extends Repository {
             return $query->get();
         }
     }
-
-
-    
-    
+   
 }

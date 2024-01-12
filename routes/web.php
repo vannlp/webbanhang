@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RolePermissionController;
@@ -14,6 +16,7 @@ use App\Models\Role;
 use App\Models\RolePermission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Modules\Site\Http\Controllers\SiteController;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 /*
@@ -96,8 +99,21 @@ Route::prefix('/admin')->name("admin.")
         Route::post('/store', [ProductController::class, 'store'])->middleware('auth_web:CREATE_PRODUCT')->name('store');
         Route::get('/edit/{id}', [ProductController::class, 'edit'])->middleware('auth_web:UPDATE_PRODUCT')->name('edit');
         Route::put('/update/{id}', [ProductController::class, 'update'])->middleware('auth_web:UPDATE_PRODUCT')->name('update');
+
+    });
+    
+    // module
+    Route::prefix('/module')->name('module.')->group(function() {
+        Route::get('/', [ModuleController::class, 'index'])->name('index');
+        Route::put('/update-status', [ModuleController::class, 'update'])->name('update');
     });
 });
+Route::post('/addToCart', [CartController::class, 'addToCartForClient'])->name('addToCartForClient');
+Route::get('/cart', [SiteController::class, 'cartPage'])->name('cartPage');
+Route::delete('/remove-cart-detail/{idCartDetail}', [CartController::class, 'removeCartDetail'])->name('removeCartDetail');
+Route::put('/update-cart', [CartController::class, 'updateCart'])->name('updateCart');
+
+Route::get('/get-cart', [CartController::class, 'getCartApi'])->name('getCartApi');
 
 Route::get('/test', [TestController::class, 'index']);
 Route::get('/test-post', [CategoryController::class, 'index']);

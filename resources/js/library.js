@@ -72,3 +72,4 @@ $.fn.loadding = function (configs = {}) {
 
     return this;
 }
+

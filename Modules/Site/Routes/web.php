@@ -11,9 +11,7 @@
 |
 */
 
-use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-use Modules\Site\Http\Controllers\CartController;
 use Modules\Site\Http\Controllers\HomeController;
 use Modules\Site\Http\Controllers\SiteController;
 
@@ -22,8 +20,7 @@ Route::get('/san-pham/{slug}', [SiteController::class, 'detailProduct'])->name('
 Route::get('/danh-muc/{slug}', [SiteController::class, 'categoryPage'])->name('categoryPage');
 Route::get('/search', [SiteController::class, 'searchPage'])->name('searchPage');
 
-Route::post('/addToCart', [CartController::class, 'addToCartForClient'])->name('addToCartForClient');
-Route::get('/cart', [SiteController::class, 'cartPage'])->name('cartPage');
+
 
 
 
