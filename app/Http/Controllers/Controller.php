@@ -22,6 +22,10 @@ class Controller extends BaseController
         ], $status);
     }
 
+    /**
+     * Test
+     * 
+     */
     public function responseError($message, $status = 400) {
         return response()->json([
             'message' => $message
